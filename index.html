@@ -1,0 +1,62 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <title> Sheree Good</title>
+    <link rel= "sylesheet" type="text/css" href="homepage.css">
+    <script src="https://code.jquery.com/jquery-2.0.2.min.js"></script>
+<script>
+function addCoursesTaken() {
+ var myTableDiv = document.getElementById("course_table");
+ var table = document.createElement('TABLE');
+ var tableBody = document.createElement('TBODY');
+
+ table.border = '1';
+ table.appendChild(tableBody);
+
+//Add course headers;
+var heading = ['Course Code', 'Course Description', 'Number of Credits', 'Professor',];
+ //TABLE COLUMNS
+ var tr = document.createElement('TR');
+ tableBody.appendChild(tr);
+ for (i = 0; i < heading.length; i++) {
+   var th = document.createElement('TH');
+   th.width = '75';
+   th.appendChild(document.createTextNode(heading[i]));
+   tr.appendChild(th);
+ }
+
+var courseList = [
+                    ['CMPS361', 'Web Development', '3', 'Voortman'],
+                    ['BMGT205', 'Marketing', '3', 'Derda'],
+                    ['BMGT271', 'Finances', '3', 'Daniel'],
+                    ['MATH175', 'Statitics','3',' Darlene'],
+                    ['GCS250','Lanuages of the World', '3', 'Newman']];
+ //TABLE ROWS
+ for (i = 0; i < courseList.length; i++) {
+   var tr = document.createElement('TR')
+   for (j = 0; j < courseList[i].length; j++) {
+     if(heading[j] === 'Number of Credits'){
+       var td = document.createElement('TD');
+       td.appendChild(document.createTextNode(courseList[i][j]));
+       td.style.textAlign = "center";
+       tr.appendChild(td);
+     }else{
+       var td = document.createElement('TD');
+       td.appendChild(document.createTextNode(courseList[i][j]));
+       tr.appendChild(td);
+     }
+   }
+   tableBody.appendChild(tr);
+ }
+ myTableDiv.appendChild(table);
+}
+
+</script>
+<body>
+View My Courses
+ <br><br>
+ <div id="course_table">
+   <body onload="addCoursesTaken()">
+</div>
+</body>
+</html>
